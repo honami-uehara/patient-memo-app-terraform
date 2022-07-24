@@ -25,3 +25,39 @@ resource "aws_subnet" "public_subnet_2" {
     Name = "patient-memo-app-ap-northeast-1c"
   }
 }
+
+resource "aws_route_table" "public_route_table_patient_memo_app" {
+  vpc_id = aws_vpc.vpc.id
+  tags = {
+    Name = "route-table-patient-memo-app"
+  }
+} 
+
+resource "aws_route_table_association" "public_1_route_table_assocication" {
+  subnet_id      = aws_subnet.public_subnet_1.id
+  route_table_id = aws_route_table.public_route_table_patient_memo_app.id
+}
+
+resource "aws_route_table_association" "public_2_route_table_assocication" {
+  subnet_id      = aws_subnet.public_subnet_2.id
+  route_table_id = aws_route_table.public_route_table_patient_memo_app.id
+}
+
+resource "aws_internet_gateway" "internet_gateway" {
+  vpc_id = aws_vpc.vpc.id
+  tags = {
+    Name = "internet-gateway-patient-memo-app"
+  }
+}
+
+resource "aws_route" "public_route" {
+  route_table_id         = aws_route_table.public_route_table_patient_memo_app.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.internet_gateway.id
+}
+
+resource "aws_iam_role" "ecs_instance_role_for_patient_memo_app" {
+      name               = "ecs-instance-role-for-patient-memo-app"
+      path               = "/"
+      assume_role_policy = file("aws_iam_role_policies/ec2_assume_role_policy.json")
+  }
