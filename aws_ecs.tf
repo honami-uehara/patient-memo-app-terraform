@@ -10,7 +10,7 @@ resource "aws_ecs_task_definition" "patient_memo_app_task" {
 }
 
 resource "aws_ecs_service" "rails_webapp_service" {
-  name            = "rails-todo-service"
+  name            = "patient-memo-app-service"
   cluster         = aws_ecs_cluster.ecs-cluster_patient_memo_app.id
   task_definition = aws_ecs_task_definition.patient_memo_app_task.arn
   desired_count   = 1
