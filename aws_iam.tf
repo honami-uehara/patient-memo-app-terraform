@@ -26,3 +26,8 @@ resource "aws_iam_policy" "ecs_instance_policy_for_patient_memo_app" {
   description = ""
   policy      = file("aws_iam_policies/ecs_instance_policy.json")
 }
+
+resource "aws_iam_instance_profile" "ecs_instance_profile_for_patient_memo_app" {
+  name = "ecs-instance-profile-for-patient-memo-app"
+  role = aws_iam_role.ecs_instance_role_for_patient_memo_app.name
+}
