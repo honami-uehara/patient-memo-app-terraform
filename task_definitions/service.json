@@ -1,0 +1,17 @@
+[
+  {
+      "name": "rails-webapp",
+      "image": "055510766179.dkr.ecr.ap-northeast-1.amazonaws.com/patient-memo-app-image-rep:latest",
+      "cpu": 333,
+      "memoryReservation": 600,
+      "essential": true,
+      "portMappings": [
+          {
+              "hostPort": 0,
+              "protocol": "tcp",
+              "containerPort": 3000
+          }
+      ],
+     "command": ["rails", "server", "-b", "0.0.0.0"]
+  }
+]
