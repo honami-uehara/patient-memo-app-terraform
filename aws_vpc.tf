@@ -55,9 +55,3 @@ resource "aws_route" "public_route" {
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = aws_internet_gateway.internet_gateway.id
 }
-
-resource "aws_iam_role" "ecs_instance_role_for_patient_memo_app" {
-      name               = "ecs-instance-role-for-patient-memo-app"
-      path               = "/"
-      assume_role_policy = file("aws_iam_role_policies/ec2_assume_role_policy.json")
-  }
