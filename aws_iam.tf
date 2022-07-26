@@ -19,3 +19,10 @@ resource "aws_iam_role" "ecs_instance_role_for_patient_memo_app" {
       path               = "/"
       assume_role_policy = file("aws_iam_policies/ec2_assume_role_policy.json")
   }
+
+resource "aws_iam_policy" "ecs_instance_policy_for_patient_memo_app" {
+  name        = "ecs-instance-policy-for-patient-memo-app"
+  path        = "/"
+  description = ""
+  policy      = file("aws_iam_policies/ecs_instance_policy.json")
+}
