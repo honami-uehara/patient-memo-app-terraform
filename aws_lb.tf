@@ -10,3 +10,10 @@ resource "aws_lb" "lb" {
         aws_subnet.public_subnet_2.id,
     ]
 }
+
+resource "aws_lb_target_group" "http" {
+    name     = "rails-http"
+    port     = 3000
+    protocol = "HTTP"
+    vpc_id = aws_vpc.vpc.id
+}
