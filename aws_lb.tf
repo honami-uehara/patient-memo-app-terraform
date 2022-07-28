@@ -25,4 +25,5 @@ resource "aws_lb_listener" "http" {
       default_action {
         target_group_arn = aws_lb_target_group.http.arn
         type             = "forward"
+      }
 }
