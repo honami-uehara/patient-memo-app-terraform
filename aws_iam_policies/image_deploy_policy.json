@@ -16,7 +16,6 @@
             "ecr:UploadLayerPart",
             "ecr:CompleteLayerUpload",
             "ecr:PutImage",
-            "ecr:PutImage",
             "ecs:RegisterTaskDefinition",
             "ecs:DescribeServices",
             "ecs:CreateTaskSet",
