@@ -15,7 +15,7 @@
             "ecr:InitiateLayerUpload",
             "ecr:UploadLayerPart",
             "ecr:CompleteLayerUpload",
-            "ecr:PutImage"
+            "ecr:PutImage",
             "ecr:PutImage",
             "ecs:RegisterTaskDefinition",
             "ecs:DescribeServices",
